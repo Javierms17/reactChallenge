@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Table from './components/Table/Table';
 
 function App() {
   const handleClick = (num) => {
@@ -12,6 +12,13 @@ function App() {
     boton.className += " active";
 
   }
+
+  const list = [
+    {risk: 1, bonds: 80, large:20, mid: 0, foreign: 0, small: 0 },
+    {risk: 2, bonds: 70, large:15, mid: 15, foreign: 0, small: 0 },
+    {risk: 3, bonds: 60, large:15, mid: 15, foreign: 10, small: 0 },
+  ]
+  const colNames = ['Risk','Bonds %','Large Cap%','Mid Cap','Foreign %', 'Small Cap %' ]
   
   return (
     <div className="App">
@@ -22,7 +29,13 @@ function App() {
 
      <button id="boton3" class="button" type="button" onClick={()=> {handleClick(3)}} >3</button>
     
+    <div class="divTable">
+    <Table list={list} colNames={colNames}/>
     </div>
+
+    </div>
+
+    
   );
 }
 
