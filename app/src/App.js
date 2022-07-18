@@ -4,22 +4,12 @@ import Table from './components/Table/Table';
 import {useSelector} from 'react-redux';
 import {setLevel} from './actions';
 import { useDispatch } from 'react-redux'
-
+import Chart from './components/Chart/Chart';
 
 function App() {
   const level = useSelector (state => state.level);
-  const dispatch = useDispatch();
-  const handleClick = (num) => {
-    
-    var boton = document.getElementById("boton"+num);
-    var allButtons = document.getElementsByClassName("button");
-    for(var i = 0; i < allButtons.length; i++){
-      allButtons[i].className = "button"; 
-    }
-    boton.className += " active";
-    dispatch(setLevel(num));
-   
-  }
+  
+ 
 
   const list = [
     {risk: 1, bonds: 80, large:20, mid: 0, foreign: 0, small: 0 },
@@ -31,13 +21,19 @@ function App() {
   return (
    
     <div className="App">
-      <h1> Level selected :{level}</h1>
+      <h1> Level selected :{ level!= 0? level:""}</h1>
       <h2>press a row to select a level </h2>
     
     <div className="divTable">
     <Table list={list} colNames={colNames}/>
+    
     </div>
-
+    {level!= 0? 
+    <div>
+      <Chart list={list} />
+    </div>
+     :"" }
+    
     </div>
 
     

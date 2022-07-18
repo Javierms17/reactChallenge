@@ -1,4 +1,4 @@
-const LevelReducer = (state = 1, action) => {
+const LevelReducer = (state = 0, action) => {
     switch (action.type){
         case 'SET_LEVEL':
             return action.payload;
