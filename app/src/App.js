@@ -1,16 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
 import Table from './components/Table/Table';
+import {useSelector} from 'react-redux';
+import {setLevel} from './actions';
+import { useDispatch } from 'react-redux'
+
 
 function App() {
+  const level = useSelector (state => state.level);
+  const dispatch = useDispatch();
   const handleClick = (num) => {
+    
     var boton = document.getElementById("boton"+num);
     var allButtons = document.getElementsByClassName("button");
     for(var i = 0; i < allButtons.length; i++){
       allButtons[i].className = "button"; 
     }
     boton.className += " active";
-
+    dispatch(setLevel(num));
+   
   }
 
   const list = [
@@ -21,15 +29,16 @@ function App() {
   const colNames = ['Risk','Bonds %','Large Cap%','Mid Cap','Foreign %', 'Small Cap %' ]
   
   return (
+   
     <div className="App">
-      
-     <button id="boton1" class="button" type="button" onClick={()=> {handleClick(1)}}>1</button>
+       <h1> level selected :{level}</h1>
+     <button id="boton1" className="button" type="button" onClick={()=> {handleClick(1)}}>1</button>
  
-     <button id="boton2" class="button" type="button" onClick={()=> {handleClick(2)}} >2</button>
+     <button id="boton2" className="button" type="button" onClick={()=> {handleClick(2)}} >2</button>
 
-     <button id="boton3" class="button" type="button" onClick={()=> {handleClick(3)}} >3</button>
+     <button id="boton3" className="button" type="button" onClick={()=> {handleClick(3)}} >3</button>
     
-    <div class="divTable">
+    <div className="divTable">
     <Table list={list} colNames={colNames}/>
     </div>
 

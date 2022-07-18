@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import './Table.css';
+import {useSelector} from 'react-redux';
 
 function Table({list, colNames,width = 'auto', height ='auto'}) {
   return (
@@ -17,7 +19,7 @@ function Table({list, colNames,width = 'auto', height ='auto'}) {
                     </thead>
                     <tbody>
                         {Object.values(list).map((obj, index) => (
-                            <tr key={index}>
+                            <tr  key={index}>
                                 {Object.values(obj).map((value,index2) => (
                                     <td key={index2}>{value}</td>
                                 ) ) }
