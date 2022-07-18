@@ -1,8 +1,27 @@
 import React from 'react';
 import './Table.css';
 import {useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
+import {setLevel} from '../../actions';
+
 
 function Table({list, colNames,width = 'auto', height ='auto'}) {
+  const level = useSelector (state => state.level);
+  const dispatch = useDispatch();
+  console.log("level = "+level);
+    const paint = (risk) => {
+    var element = document.getElementById(risk);
+    var allTr = document.getElementsByClassName("active");
+    if(allTr != null){
+        for(var i = 0; i < allTr.length; i++){
+            allTr[i].className = ""; 
+          }
+    }
+    element.className = "active";
+    
+    dispatch(setLevel(risk));
+    }
+
   return (
     <div>
         {
@@ -19,9 +38,10 @@ function Table({list, colNames,width = 'auto', height ='auto'}) {
                     </thead>
                     <tbody>
                         {Object.values(list).map((obj, index) => (
-                            <tr  key={index}>
+                            
+                            <tr key={index} id={obj.risk}  onClick = {() => {paint(obj.risk)}}>
                                 {Object.values(obj).map((value,index2) => (
-                                    <td key={index2}>{value}</td>
+                                    <td key={index2} id={value} >{value}</td>
                                 ) ) }
                             </tr>
                         ))}

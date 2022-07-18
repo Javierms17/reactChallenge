@@ -31,8 +31,12 @@ function App() {
   return (
    
     <div className="App">
-      <h1> Level selected :{level}</h1>
-      <h2>press a row to select a level </h2>
+       <h1> level selected :{level}</h1>
+     <button id="boton1" className="button" type="button" onClick={()=> {handleClick(1)}}>1</button>
+ 
+     <button id="boton2" className="button" type="button" onClick={()=> {handleClick(2)}} >2</button>
+
+     <button id="boton3" className="button" type="button" onClick={()=> {handleClick(3)}} >3</button>
     
     <div className="divTable">
     <Table list={list} colNames={colNames}/>
