@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux';
 import {setLevel} from './actions';
 import { useDispatch } from 'react-redux'
 import Chart from './components/Chart/Chart';
+import Recommendation from './components/Recommendation/Recommendation';
 
 function App() {
   const level = useSelector (state => state.level);
@@ -33,8 +34,9 @@ function App() {
       <Chart list={list} />
     </div>
      :"" }
-    
+     <Recommendation/>
     </div>
+   
 
     
   );
