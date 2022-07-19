@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 function Chart({list}){
    const level = useSelector (state => state.level);
    const dataSet = [];
-   console.log("level en chart "+level);
+   
    if(level != 0){
         dataSet[0]=list[level-1].bonds;
         dataSet[1]=list[level-1].large;

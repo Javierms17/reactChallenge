@@ -4,13 +4,29 @@ import Table from './components/Table/Table';
 import {useSelector} from 'react-redux';
 import {setLevel} from './actions';
 import { useDispatch } from 'react-redux'
-
+// console.log("bondsV "+bondsV+"largeV "+largeV+" midV"+midV+" foreignV "+foreignV+" smallV "+smallV);
+// console.log("total: "+sum+" diference %: "+dbonds1+" diference in cash: "+dcbonds);
 
 function App() {
   const level = useSelector (state => state.level);
   const dispatch = useDispatch();
   const handleClick = (num) => {
+    ///respaldo
+    // const pbonds1 = getPercentage(bondsV,sum); // % of bonds 
+        
+        
+    // const dbonds1 = dataSet[0] - pbonds1; //difference in %
     
+    // const dcbonds = getNumfromPercentage(dbonds1,sum); // diference in Cash
+
+    // var rounded = Math.round(dcbonds * 10) / 10
+    //  setDBonds(rounded);
+
+    // const newAmount = bondsV+ rounded;
+
+    // setNewBonds(newAmount);
+
+    ///
     var boton = document.getElementById("boton"+num);
     var allButtons = document.getElementsByClassName("button");
     for(var i = 0; i < allButtons.length; i++){

@@ -8,9 +8,10 @@ import {setLevel} from '../../actions';
 function Table({list, colNames,width = 'auto', height ='auto'}) {
   const level = useSelector (state => state.level);
   const dispatch = useDispatch();
-  console.log("level = "+level);
+ 
     const paint = (risk) => {
-    var element = document.getElementById(risk);
+    var element = document.getElementById(risk+"tr");
+    console.log(element);
     var allTr = document.getElementsByClassName("active");
     if(allTr != null){
         for(var i = 0; i < allTr.length; i++){
@@ -39,7 +40,7 @@ function Table({list, colNames,width = 'auto', height ='auto'}) {
                     <tbody>
                         {Object.values(list).map((obj, index) => (
                             
-                            <tr key={index} id={obj.risk}  onClick = {() => {paint(obj.risk)}}>
+                            <tr key={index} id={obj.risk+"tr"}  onClick = {() => {paint(obj.risk)}}>
                                 {Object.values(obj).map((value,index2) => (
                                     <td key={index2} id={value} >{value}</td>
                                 ) ) }
