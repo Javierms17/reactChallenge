@@ -4,13 +4,15 @@ import Table from './components/Table/Table';
 import {useSelector} from 'react-redux';
 import {setLevel} from './actions';
 import { useDispatch } from 'react-redux'
-import Chart from './components/Chart/Chart';
+import { useNavigate } from 'react-router-dom';
 import Recommendation from './components/Recommendation/Recommendation';
+import { BrowserRouter,Route,Routes } from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
+import Header from './components/Header/Header';
 
 function App() {
   const level = useSelector (state => state.level);
-  
- 
 
   const list = [
     {risk: 1, bonds: 80, large:20, mid: 0, foreign: 0, small: 0 },
@@ -26,28 +28,18 @@ function App() {
 
 
   ]
-  const colNames = ['Risk','Bonds %','Large Cap%','Mid Cap','Foreign %', 'Small Cap %' ]
-  
-  return (
-   
-    <div className="App">
-      <h1> Level selected :{ level!= 0? level:""}</h1>
-      <h2>press a row to select a level </h2>
-    
-    <div className="divTable">
-    <Table list={list} colNames={colNames}/>
-    
-    </div>
-    {level!= 0? 
-    <div>
-      <Chart list={list} />
-    </div>
-     :"" }
-     <Recommendation list={list}/>
-    </div>
-   
+  const colNames = ['Risk','Bonds %','Large Cap%','Mid Cap','Foreign %', 'Small Cap %' ];
 
+  return (
+   <BrowserRouter>
+   <Header/>
+      <Routes>
+        <Route path="/" element={<HomePage list={list} colNames={colNames} />}/>
+        <Route path="/recomend" element={<Recommendation  list={list}/>}/>
+      </Routes>
     
+    </BrowserRouter>
+
   );
 }
 

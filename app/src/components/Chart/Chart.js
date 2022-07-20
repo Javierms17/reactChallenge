@@ -2,6 +2,7 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import {useSelector} from 'react-redux';
+import './Chart.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -44,7 +45,7 @@ function Chart({list}){
         ],
       };
     return (
-        <div>
+        <div className='chart'>
          <Doughnut data={data} />
         </div>
     )
