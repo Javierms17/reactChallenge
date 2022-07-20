@@ -111,6 +111,7 @@ function Recommendation({list}){
                         clonedValues[i].dif += transfer;
                         clonedValues[j].dif -= transfer;
                         if(transfer != 0){
+                            transfer = Math.round(transfer * 10) / 10; // round
                         console.log("transfer "+transfer+" from "+clonedValues[i].name+" to "+clonedValues[j].name);
                         }
                     }
