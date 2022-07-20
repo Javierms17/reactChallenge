@@ -15,8 +15,8 @@ import {useSelector} from 'react-redux';
   return (
   
     <div className="App">
-    <button onClick={handleClick}> go to recomend</button>
-    <h1> Level selected :{ level!= 0? level:""}</h1>
+    
+    <h1> Risk Level selected :{ level!= 0? level:""}</h1>
     <h2>press a row to select a level </h2>
   <div className='dashboard'>
   <div className="divTable">
@@ -29,10 +29,8 @@ import {useSelector} from 'react-redux';
   </div>
    :"" }
   </div>
-
+  <button className='button1' onClick={handleClick}> go to recomend</button>
   </div>
-
-   
 
   
   )
