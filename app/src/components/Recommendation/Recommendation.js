@@ -81,8 +81,43 @@ function Recommendation({list}){
         setDSmall(smallValues.dif);
         setNewSmall(smallValues.new);
 
+        const clonedValues = [];
 
+        clonedValues [0] = Object.assign({}, bondValues);
+        clonedValues[0].name = "bond";
+        clonedValues [1] = Object.assign({}, largeValues);
+        clonedValues[1].name = "large";
+        clonedValues [2] = Object.assign({}, midValues);
+        clonedValues[2].name = "mid";
+        clonedValues [3] = Object.assign({}, foreignValues);
+        clonedValues[3].name = "foreign";
+        clonedValues [4] = Object.assign({}, smallValues);
+        clonedValues[4].name = "small";
+
+
+        const recomendation = "";
         
+        for(var i = 0; i<clonedValues.length ;i++ ){
+            if(clonedValues[i].dif <0){
+                
+                for(var j=0 ;j<clonedValues.length;j++ ){
+                    if(clonedValues[j].dif>0 && j!=i){
+                        var transfer =0 ;
+                        if(clonedValues[i].dif*-1 >= clonedValues[j].dif) {
+                             transfer = clonedValues[j].dif;
+                        } else{
+                            transfer = clonedValues[i].dif*-1;
+                        }
+                        clonedValues[i].dif += transfer;
+                        clonedValues[j].dif -= transfer;
+                        if(transfer != 0){
+                        console.log("transfer "+transfer+" from "+clonedValues[i].name+" to "+clonedValues[j].name);
+                        }
+                    }
+                }
+
+            }
+        }
 
     }
     const getValues= (num, sum,per) => { // per = percentage of the risk level
@@ -151,11 +186,7 @@ function Recommendation({list}){
             <br/>
             <br/>
             <button type='submit' >Recomend </button>
-            <p> bonds =  {bonds}</p>
-            <p> large =  {large}</p>
-            <p> mid cap = {mid}</p>
-            <p> foreign = {foreign}</p>
-            <p> small = {small} </p>
+
             <p> Recomended transfers </p>
             
          

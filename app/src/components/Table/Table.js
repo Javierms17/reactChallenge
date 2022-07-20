@@ -11,7 +11,6 @@ function Table({list, colNames,width = 'auto', height ='auto'}) {
  
     const paint = (risk) => {
     var element = document.getElementById(risk+"tr");
-    console.log(element);
     var allTr = document.getElementsByClassName("active");
     if(allTr != null){
         for(var i = 0; i < allTr.length; i++){
