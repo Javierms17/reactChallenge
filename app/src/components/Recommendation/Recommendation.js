@@ -152,73 +152,67 @@ function Recommendation({list}){
     return(
         <div className='recommendations'>
             <form onSubmit={ev =>{
-                ev.preventDefault();
-                calculate();
+                    ev.preventDefault();
+                    calculate();
 
-            }}>
-
-           
-            <h1>Recommendation</h1>
-            <h2>Level selected : {level}</h2>
-         <div className='allLevelPercentajes' >   
-         <p className='levelpercentages'>bonds : {dataSet[0]}%</p>
-         <p className='levelpercentages'>large: {dataSet[1]}% </p>
-         <p className='levelpercentages'> mid: {dataSet[2]}%</p>
-         <p className='levelpercentages'>foreign: {dataSet[3]}%</p>
-         <p className='levelpercentages'>small: {dataSet[4]}%</p>
-         </div>
-            <br/>
-            <div className='titleandlist'>
-           <div className='titles' > <div className='current'>Current Amount</div><div className='currentResponsive'>Current</div><div className='diference'> Diference</div> <div className='difResponsive'> Dif</div><div className='newAmount'>New Amount</div><div className='newResponsive'>New</div></div>
-            <div className='labelAndInputs'>
-            <label>Bonds $: </label>
-            <input type='number' name='bonds' value={bonds} autoComplete='off' onChange={bondsChange}/>
-            <input type='number' name='dbonds' readOnly  value={dbonds} /> 
-            <input type='number' name='newbonds' readOnly  value={newBonds} /> 
-            <br/>
-            <br/>
-            <label>Large $: </label>
-            <input type='number' name='large' value={large} autoComplete='off' onChange={largeChange}/>
-            <input type='number' name='dlarge' readOnly  value={dlarge} /> 
-            <input type='number' name='newlarge' readOnly  value={newLarge} /> 
-            <br/>
-            <br/>
-            <label>Mid $: </label>
-            <input type='number' name='mid' value={mid} autoComplete='off' onChange={midChange}/>
-            <input type='number' name='dmid' readOnly  value={dmid} /> 
-            <input type='number' name='newmid' readOnly  value={newMid} /> 
-            <br/>
-            <br/>
-            <label>Foreign $: </label>
-            <input type='number' name='foreign' value={foreign} autoComplete='off' onChange={foreignChange}/>
-            <input type='number' name='dforeign' readOnly  value={dforeign} /> 
-            <input type='number' name='newforeign' readOnly  value={newForeign} /> 
-            <br/>
-            <br/>
-            <label>Small $: </label>
-            <input type='number' name='small' value={small} autoComplete='off' onChange={smallChange}/>
-            <input type='number' name='dsmall' readOnly  value={dsmall} /> 
-            <input type='number' name='newsmall' readOnly  value={newSmall} /> 
-            {/* end of label and inputs */}
-            </div> 
-            <br/>
-            <br/>
-            <button type='submit' className='button2' >Rebalance </button>
-            </div>
-            <p> Recomended transfers: </p>
-            
-            {/* {transfers} */}
-            { transfers.length > 0 ?        <ul>
-            {transfers.map((transf, index)=>(
-                                <li key={index}>
-                                    {transf}
-                                </li>
-            ))}
-           </ul> : ""}
-     
+            }}>       
+                    <h1>Recommendation</h1>
+                    <h2>Level selected : {level}</h2>
+                    <div className='allLevelPercentajes' >   
+                        <p className='levelpercentages'>bonds : {dataSet[0]}%</p>
+                        <p className='levelpercentages'>large: {dataSet[1]}% </p>
+                        <p className='levelpercentages'> mid: {dataSet[2]}%</p>
+                        <p className='levelpercentages'>foreign: {dataSet[3]}%</p>
+                        <p className='levelpercentages'>small: {dataSet[4]}%</p>
+                    </div>
+                    <br/>
+                    <div className='titleandlist'>
+                        <div className='titles' > <div className='current'>Current Amount</div><div className='currentResponsive'>Current</div><div className='diference'> Diference</div> <div className='difResponsive'> Dif</div><div className='newAmount'>New Amount</div><div className='newResponsive'>New</div></div>
+                        <div className='labelAndInputs'>
+                            <label>Bonds $: </label>
+                            <input type='number' name='bonds' value={bonds} autoComplete='off' onChange={bondsChange}/>
+                            <input type='number' name='dbonds' readOnly  value={dbonds} /> 
+                            <input type='number' name='newbonds' readOnly  value={newBonds} /> 
+                            <br/>
+                            <br/>
+                            <label>Large $: </label>
+                            <input type='number' name='large' value={large} autoComplete='off' onChange={largeChange}/>
+                            <input type='number' name='dlarge' readOnly  value={dlarge} /> 
+                            <input type='number' name='newlarge' readOnly  value={newLarge} /> 
+                            <br/>
+                            <br/>
+                            <label>Mid $: </label>
+                            <input type='number' name='mid' value={mid} autoComplete='off' onChange={midChange}/>
+                            <input type='number' name='dmid' readOnly  value={dmid} /> 
+                            <input type='number' name='newmid' readOnly  value={newMid} /> 
+                            <br/>
+                            <br/>
+                            <label>Foreign $: </label>
+                            <input type='number' name='foreign' value={foreign} autoComplete='off' onChange={foreignChange}/>
+                            <input type='number' name='dforeign' readOnly  value={dforeign} /> 
+                            <input type='number' name='newforeign' readOnly  value={newForeign} /> 
+                            <br/>
+                            <br/>
+                            <label>Small $: </label>
+                            <input type='number' name='small' value={small} autoComplete='off' onChange={smallChange}/>
+                            <input type='number' name='dsmall' readOnly  value={dsmall} /> 
+                            <input type='number' name='newsmall' readOnly  value={newSmall} /> 
+                            {/* end of label and inputs */}
+                        </div> 
+                        <br/>
+                        <br/>
+                        <button type='submit' className='button2' >Rebalance </button>
+                </div>
+                    <p> Recomended transfers: </p>
+                    { transfers.length > 0 ?  <ul>
+                    {transfers.map((transf, index)=>(
+                        <li key={index}>
+                            {transf}
+                        </li>
+                    ))}
+                </ul> : ""}
             </form>
         </div>
     )
-
 }
 export  default Recommendation

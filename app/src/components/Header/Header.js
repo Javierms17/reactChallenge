@@ -34,8 +34,6 @@ function Header() {
 				</div> 
 			</div> 
 		</header> 
-
-	
 		<div className="responsive-menu">			
 			<nav className="responsive-nav"></nav> 
 		</div> 

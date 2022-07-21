@@ -6,23 +6,21 @@ import {setLevel} from '../../actions';
 
 
 function Table({list, colNames,width = 'auto', height ='auto'}) {
-  const level = useSelector (state => state.level);
-  const dispatch = useDispatch();
- 
+    const level = useSelector (state => state.level);
+    const dispatch = useDispatch();
     const paint = (risk) => {
-    var element = document.getElementById(risk+"tr");
-    var allTr = document.getElementsByClassName("active");
-    if(allTr != null){
-        for(var i = 0; i < allTr.length; i++){
-            allTr[i].className = ""; 
-          }
-    }
-    element.className = "active";
-    
-    dispatch(setLevel(risk));
+        var element = document.getElementById(risk+"tr");
+        var allTr = document.getElementsByClassName("active");
+        if(allTr != null){
+            for(var i = 0; i < allTr.length; i++){
+                allTr[i].className = ""; 
+            }
+        }
+        element.className = "active"; 
+        dispatch(setLevel(risk));
     }
 
-  return (
+    return (
     <div>
         {
             list.length > 0 &&(
