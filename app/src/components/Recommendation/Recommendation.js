@@ -169,7 +169,7 @@ function Recommendation({list}){
          </div>
             <br/>
             <div className='titleandlist'>
-           <div className='titles' > <div>Current Amount</div><div className='diference'> Diference</div> <div className='newAmount'>New Amount</div></div>
+           <div className='titles' > <div className='current'>Current Amount</div><div className='currentResponsive'>Current</div><div className='diference'> Diference</div> <div className='difResponsive'> Dif</div><div className='newAmount'>New Amount</div><div className='newResponsive'>New</div></div>
             <div className='labelAndInputs'>
             <label>Bonds $: </label>
             <input type='number' name='bonds' value={bonds} autoComplete='off' onChange={bondsChange}/>
