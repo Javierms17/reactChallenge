@@ -85,15 +85,15 @@ function Recommendation({list}){
         const clonedValues = [];
 
         clonedValues [0] = Object.assign({}, bondValues);
-        clonedValues[0].name = "bond";
+        clonedValues[0].name = "Bonds";
         clonedValues [1] = Object.assign({}, largeValues);
-        clonedValues[1].name = "large";
+        clonedValues[1].name = "Large Cap";
         clonedValues [2] = Object.assign({}, midValues);
-        clonedValues[2].name = "mid";
+        clonedValues[2].name = "Mid Cap";
         clonedValues [3] = Object.assign({}, foreignValues);
-        clonedValues[3].name = "foreign";
+        clonedValues[3].name = "Foreign";
         clonedValues [4] = Object.assign({}, smallValues);
-        clonedValues[4].name = "small";
+        clonedValues[4].name = "Small Cap";
 
 
         const recomendation = [];
@@ -131,9 +131,9 @@ function Recommendation({list}){
         const percentage = getPercentage(num,sum); // % 
         const diffInPer = per - percentage; //difference in %
         const diffInCash = getNumfromPercentage(diffInPer,sum); // diference in Cash
-        var rounded = Math.round(diffInCash * 10) / 10; // round
-        const newAmount = num+ rounded;
-
+        var rounded = Math.round(diffInCash * 100) / 100; // round
+        var newAmount = num+ rounded;
+        newAmount = Math.round(newAmount * 100) / 100;
         return {"dif":rounded, "new":newAmount};
     }
 
@@ -203,7 +203,7 @@ function Recommendation({list}){
             </div> 
             <br/>
             <br/>
-            <button type='submit' className='button1' >Recommend </button>
+            <button type='submit' className='button2' >Rebalance </button>
             </div>
             <p> Recomended transfers: </p>
             
