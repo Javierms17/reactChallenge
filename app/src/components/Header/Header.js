@@ -16,10 +16,10 @@ function Header() {
 					<div className="navigation">
 						<nav className="main-nav">
 							<ul className="list-unstyled">
-								<li onClick={handleClick}><a href="#0">Home</a></li>
+								<li className='home' onClick={handleClick}><a href="#0">Home</a></li>
 							</ul>
 						</nav>
-						<a href="" className="responsive-menu-open">
+						<a  href="" className="responsive-menu-open">
 			                <span className="icon-bar"></span>
 			                <span className="icon-bar"></span>
 			                <span className="icon-bar"></span>

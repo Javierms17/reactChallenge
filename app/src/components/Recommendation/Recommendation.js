@@ -30,6 +30,7 @@ function Recommendation({list}){
    const [newForeign,setNewForeign] = useState(0);
    const [dsmall,setDSmall] = useState(0); 
    const [newSmall,setNewSmall] = useState(0);
+   const [transfers,setTransfers] = useState([]);
 
    const largeChange = (e) => {
         const value = e.target.value;
@@ -95,7 +96,7 @@ function Recommendation({list}){
         clonedValues[4].name = "small";
 
 
-        const recomendation = "";
+        const recomendation = [];
         
         for(var i = 0; i<clonedValues.length ;i++ ){
             if(clonedValues[i].dif <0){
@@ -112,13 +113,18 @@ function Recommendation({list}){
                         clonedValues[j].dif -= transfer;
                         if(transfer != 0){
                             transfer = Math.round(transfer * 10) / 10; // round
-                        console.log("transfer "+transfer+" from "+clonedValues[i].name+" to "+clonedValues[j].name);
+                    //    console.log("transfer "+transfer+" from "+clonedValues[i].name+" to "+clonedValues[j].name);
+                        var reco = "Transfer "+transfer+" from "+clonedValues[i].name+" to "+clonedValues[j].name +".";
+               
+                        recomendation.push(reco);
                         }
                     }
                 }
 
             }
         }
+        console.log(recomendation);
+        setTransfers(recomendation);
 
     }
     const getValues= (num, sum,per) => { // per = percentage of the risk level
@@ -144,7 +150,7 @@ function Recommendation({list}){
     }
 
     return(
-        <div>
+        <div className='recommendations'>
             <form onSubmit={ev =>{
                 ev.preventDefault();
                 calculate();
@@ -153,9 +159,18 @@ function Recommendation({list}){
 
            
             <h1>Recommendation</h1>
-            <h2>Level selected = {level}</h2>
-            <p>bonds : {dataSet[0]}% large: {dataSet[1]}% mid: {dataSet[2]}% foreign: {dataSet[3]}% small: {dataSet[4]}%</p>
+            <h2>Level selected : {level}</h2>
+         <div className='allLevelPercentajes' >   
+         <p className='levelpercentages'>bonds : {dataSet[0]}%</p>
+         <p className='levelpercentages'>large: {dataSet[1]}% </p>
+         <p className='levelpercentages'> mid: {dataSet[2]}%</p>
+         <p className='levelpercentages'>foreign: {dataSet[3]}%</p>
+         <p className='levelpercentages'>small: {dataSet[4]}%</p>
+         </div>
             <br/>
+            <div className='titleandlist'>
+           <div className='titles' > <div>Current Amount</div><div className='diference'> Diference</div> <div className='newAmount'>New Amount</div></div>
+            <div className='labelAndInputs'>
             <label>Bonds $: </label>
             <input type='number' name='bonds' value={bonds} autoComplete='off' onChange={bondsChange}/>
             <input type='number' name='dbonds' readOnly  value={dbonds} /> 
@@ -184,13 +199,23 @@ function Recommendation({list}){
             <input type='number' name='small' value={small} autoComplete='off' onChange={smallChange}/>
             <input type='number' name='dsmall' readOnly  value={dsmall} /> 
             <input type='number' name='newsmall' readOnly  value={newSmall} /> 
+            {/* end of label and inputs */}
+            </div> 
             <br/>
             <br/>
-            <button type='submit' >Recomend </button>
-
-            <p> Recomended transfers </p>
+            <button type='submit' className='button1' >Recommend </button>
+            </div>
+            <p> Recomended transfers: </p>
             
-         
+            {/* {transfers} */}
+            { transfers.length > 0 ?        <ul>
+            {transfers.map((transf, index)=>(
+                                <li key={index}>
+                                    {transf}
+                                </li>
+            ))}
+           </ul> : ""}
+     
             </form>
         </div>
     )

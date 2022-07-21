@@ -37,7 +37,7 @@
 }
 .main-nav ul>li>a {
 	font-size: 14px;
-	color: #8f9499;
+	color: #ffffff;
 	display: inline-block;
 	-webkit-transition: .3s;
 	-o-transition: .3s;
@@ -45,6 +45,8 @@
 	text-transform: uppercase;
 	line-height: 60px;
 	padding: 0 20px;
+	font-size: large;
+	text-decoration: none;
 }
 
 .main-nav ul>li a:hover {
@@ -108,6 +110,10 @@
 	min-width: 162px;
 	display: block;
 	text-transform: capitalize;
+}
+.home{
+	text-decoration: none;
+
 }
 .main-nav ul>li ul li:last-of-type{
 	border: none;
